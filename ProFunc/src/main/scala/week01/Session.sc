@@ -1,18 +1,21 @@
 object session {
   1+2
 
-  def abs(x:Double) = if (x<0) -x else x
 
-  def sqrtIter(guess: Double, x: Double): Double =
-    if (isGoodEnough(guess, x)) guess
-    else sqrtIter(improve(guess, x), x)
 
-  def isGoodEnough(guess: Double, x: Double) = abs(x - guess * guess) <= 0.01 * x
+  def sqrt(x: Double) = {
+    def abs(x:Double) = if (x<0) -x else x
 
-  def improve(guess: Double, x: Double) =
-    (guess + x / guess) / 2
+    def sqrtIter(guess: Double): Double =
+      if (isGoodEnough(guess)) guess
+      else sqrtIter(improve(guess))
 
-  def sqrt(x: Double) = sqrtIter(1.0, x)
+    def isGoodEnough(guess: Double) = abs(x - guess * guess) <= 0.01 * x
+
+    def improve(guess: Double) =
+      (guess + x / guess) / 2
+    sqrtIter(1.0)
+  }
 
   sqrt(1)
   sqrt(4)
