@@ -8,6 +8,7 @@ case class Rational(x: Int, y: Int) {
 
   /**
     * The alternative constructor
+    *
     * @param y the integer
     * @return a Rational Integer
     */
@@ -22,8 +23,18 @@ case class Rational(x: Int, y: Int) {
 
   def neg = new Rational(- numer, denom)
 
+  def unary_- = this.neg
+  /**
+    * This is using a < to define an operator
+    * @param that another operand
+    * @return true if that is greater
+    */
+  def < (that: Rational) =
+     this.sub(that).numer < 0
+
   def sub(that: Rational) = add(that.neg)
 
   override def toString = numer + "/" + denom
+
 
 }
