@@ -2,3 +2,11 @@ submit jackal.sin@hotmail.com
 submit jackal.sin@hotmail.com tTtpYRMgFYTWXWjI
 submit jackal.sin@hotmail.com 
 submit jackal.sin@hotmail.com P6X7VzzqSV9tcQ0C
+submit test("union contains all elements of each set") {
+    new TestSets {
+      val s = union(s1, s2)
+      assert(contains(s, 1), "Union 1")
+      assert(contains(s, 2), "Union 2")
+      assert(!contains(s, 3), "Union 3")
+    }
+submit jackal.sin@hotmail.com MU5xZQjOxl1ejQOq

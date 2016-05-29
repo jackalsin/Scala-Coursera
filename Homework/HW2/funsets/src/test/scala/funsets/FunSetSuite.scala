@@ -110,5 +110,12 @@ class FunSetSuite extends FunSuite {
     }
   }
 
+  test("test of forall function ") {
+    new TestSets {
+      assert(forall(s3, x => x<1000))
+
+    }
+  }
+
 
 }
