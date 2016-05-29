@@ -4,7 +4,7 @@
 		module="lesson2_2_currying$sources_2.11"
 		revision="1.0"
 		status="integration"
-		publication="20160528195330"
+		publication="20160529021212"
 	/>
 	<configurations>
 		<conf name="compile" visibility="public" description=""/>
