@@ -5,6 +5,13 @@ package Two5ObjectsAndClasses
   */
 case class Rational(x: Int, y: Int) {
   require(denom> 0, "Denominator cannot be zero")
+
+  /**
+    * The alternative constructor
+    * @param y the integer
+    * @return a Rational Integer
+    */
+  def this (y: Int) = this(y, 1)
   def numer = x
 
   def denom = y
