@@ -77,7 +77,7 @@ abstract class TweetSet {
    * Question: Should we implment this method here, or should it remain abstract
    * and be implemented in the subclasses?
    */
-    def mostRetweeted: Tweet = ???
+    def mostRetweeted: Tweet
   
   /**
    * Returns a list containing all tweets of this set, sorted by retweet count
@@ -88,7 +88,17 @@ abstract class TweetSet {
    * Question: Should we implment this method here, or should it remain abstract
    * and be implemented in the subclasses?
    */
-    def descendingByRetweet: TweetList = ???
+    def descendingByRetweet: TweetList = {
+      def loop(ts:TweetSet, tl: TweetList): TweetList = {
+        if (ts.isEmpty) tl
+        else {
+          val most = ts.mostRetweeted
+          new Cons(most, loop(ts.remove(most), tl))
+        }
+      }
+
+      loop(this, Nil)
+    }
 
 
 
@@ -141,6 +151,10 @@ class Empty extends TweetSet {
   override def tail: TweetSet = throw new NoSuchElementException("Empty.tail")
 
   override def isEmpty: Boolean = true
+
+  override def mostRetweeted: Tweet = {
+    throw new NoSuchElementException("Nil.mostRetweeted")
+  }
 }
 
 class NonEmpty(elem: Tweet, left: TweetSet, right: TweetSet) extends TweetSet {
@@ -191,6 +205,16 @@ class NonEmpty(elem: Tweet, left: TweetSet, right: TweetSet) extends TweetSet {
   }
 
   override def isEmpty: Boolean = false
+
+  override def mostRetweeted: Tweet = {
+    if (tail.isEmpty) elem
+    else {
+      val tailMaxTweet = tail.mostRetweeted
+      val tailMax = tailMaxTweet.retweets
+      if (head.retweets > tailMax) head
+      else tailMaxTweet
+    }
+  }
 }
 
 trait TweetList {
