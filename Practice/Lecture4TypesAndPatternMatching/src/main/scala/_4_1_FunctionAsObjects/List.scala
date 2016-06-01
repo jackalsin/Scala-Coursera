@@ -24,3 +24,7 @@ class  Nil[T] extends List[T] {
 
   override def head: Nothing = throw new NoSuchElementException("Nil.head")
 }
+
+object List {
+  def apply[T](x1: T, x2: T): List[T] = new Cons[T](x1, new Cons[T](x2, new Nil[T]))
+}
