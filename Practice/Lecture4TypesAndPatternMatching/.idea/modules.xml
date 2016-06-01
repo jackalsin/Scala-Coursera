@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/lecture4typesandpatternmatching.iml" filepath="$PROJECT_DIR$/.idea/modules/lecture4typesandpatternmatching.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lecture4typesandpatternmatching-build.iml" filepath="$PROJECT_DIR$/.idea/modules/lecture4typesandpatternmatching-build.iml" />
     </modules>
   </component>
 </project>
