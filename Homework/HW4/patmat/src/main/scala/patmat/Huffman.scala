@@ -155,15 +155,17 @@ object Huffman {
    * the resulting list of characters.
    */
     def decode(tree: CodeTree, bits: List[Bit]): List[Char] = {
-      def decodeHelper(innerTree: CodeTree, bits: List[Bit], result: List[Char]): List[Char] = {
-        (tree, bits) match {
+      def decodeHelper(innerTree: CodeTree, tempBits: List[Bit], result: List[Char]): List[Char] = {
+        (innerTree, tempBits) match {
           case (innerTree: Leaf, Nil) => result :+ innerTree.char
-          case (innerTree: Leaf, _) => decodeHelper(tree, bits, result :+ innerTree.char)
-          case (innerTree: Fork, 0::xs) => decodeHelper(innerTree.left,bits.tail, result)
-          case (innerTree: Fork, 1::xs) => decodeHelper(innerTree.right,bits.tail, result)
+          case (innerTree: Leaf, xs) => decodeHelper(tree, xs, result :+ innerTree.char)
+          case (innerTree: Fork, 0::xs) => decodeHelper(innerTree.left,tempBits.tail, result)
+          case (innerTree: Fork, 1::xs) => decodeHelper(innerTree.right,tempBits.tail, result)
+          case (_, _) => throw new IllegalArgumentException(" Not a match " + tempBits.toString())
         } // end of match
       }
       decodeHelper(tree, bits, List())
+
     }
 
   
