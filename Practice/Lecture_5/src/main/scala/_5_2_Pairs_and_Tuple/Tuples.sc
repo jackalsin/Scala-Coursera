@@ -22,5 +22,6 @@ object Tuples {
     }
   } // end of define merge sort
 
-  
+  val unsortList = List(3, 5, 2, 19, 92,1)
+  mergeSort(unsortList)
 }
